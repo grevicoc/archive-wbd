@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: wbd-1
+    ports:
+      - 80:80
+    volumes:
+      - ./src:/var/www/html/src
+    

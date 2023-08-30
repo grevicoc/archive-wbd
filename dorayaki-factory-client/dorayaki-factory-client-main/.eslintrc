@@ -1,0 +1,32 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier", "unused-imports"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/destructuring-assignment": "off", // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
+    "react/require-default-props": "off", // Allow non-defined react props as undefined
+    "unused-imports/no-unused-imports": "error",
+    "@typescript-eslint/no-unused-vars": ["error", { "args": "none" }],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "quotes": ["error", "single"],
+    "react/prop-types": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}

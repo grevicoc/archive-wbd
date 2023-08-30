@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:tns="http://dorayakisupplier.wbd.com/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+        targetNamespace="http://dorayakisupplier.wbd.com/">
+    <types>
+        <xsd:schema
+                targetNamespace="http://dorayakisupplier.wbd.com/"
+                attributeFormDefault="qualified"
+                elementFormDefault="qualified">
+
+            <!-- Service Add Stock -->
+
+            <xsd:complexType name="request">
+                <xsd:sequence>
+                    <xsd:element name="idRequest" type="xsd:int" />
+                    <xsd:element name="idRecipe" type="xsd:int" />
+                    <xsd:element name="amount" type="xsd:int" />
+                    <xsd:element name="status" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:element name="addStockResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="code" type="xsd:int"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                        <xsd:element name="data" type="tns:request" nillable="true"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="addStockRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="idRecipe" type="xsd:int"/>
+                        <xsd:element name="amount" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- Service Get All Recipe -->
+
+            <xsd:complexType name="recipe">
+                <xsd:sequence>
+                    <xsd:element name="idRecipe" type="xsd:int"/>
+                    <xsd:element name="recipeName" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="listRecipe">
+                <xsd:sequence>
+                    <xsd:element name="recipes" maxOccurs="unbounded" minOccurs="0" nillable="true"
+                                 type="tns:recipe"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            
+            <xsd:element name="getAllRecipeResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="code" type="xsd:int"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                        <xsd:element name="data" nillable="true" type="tns:listRecipe"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- Service Get Status Request -->
+
+            <xsd:element name="getStatusResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="code" type="xsd:int"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                        <xsd:element name="data" nillable="true" type="tns:request"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+
+            <xsd:element name="idRequest" type="xsd:int"/>
+
+
+        </xsd:schema>
+    </types>
+
+    <message name="addStockRequest">
+        <part name="parameters" element="tns:addStockRequest"/>
+    </message>
+    <message name="addStockResponse">
+        <part name="parameters" element="tns:addStockResponse"/>
+    </message>
+
+    <message name="getAllRecipeRequest">
+    </message>
+    <message name="getAllRecipeResponse">
+        <part name="parameters" element="tns:getAllRecipeResponse"/>
+    </message>
+
+    <message name="getStatusRequestRequest">
+        <part name="parameters" element="tns:idRequest"/>
+    </message>
+    <message name="getStatusRequestResponse">
+        <part name="parameters" element="tns:getStatusResponse"/>
+    </message>
+
+    <portType name="DorayakiSupplierPortType">
+        <operation name="addStock">
+            <input message="tns:addStockRequest"/>
+            <output message="tns:addStockResponse"/>
+        </operation>
+        <operation name="getAllRecipe">
+            <input message="tns:getAllRecipeRequest"/>
+            <output message="tns:getAllRecipeResponse"/>
+        </operation>
+        <operation name="getStatusRequest">
+            <input message="tns:getStatusRequestRequest"/>
+            <output message="tns:getStatusRequestResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="DorayakiSupplierSOAP"
+             type="tns:DorayakiSupplierPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="addStock">
+            <soap:operation
+                    soapAction="http://dorayakisupplier.wbd.com/addStock"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getAllRecipe">
+            <soap:operation
+                    soapAction="http://dorayakisupplier.wbd.com/getAllRecipe"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getStatusRequest">
+            <soap:operation
+                    soapAction="http://dorayakisupplier.wbd.com/getStatusRequest"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="DorayakiSupplierService">
+        <port name="DorayakiSupplierSOAP" binding="tns:DorayakiSupplierSOAP">
+            <soap:address
+                    location="http://localhost:8080/dorayakisupplier"/>
+        </port>
+    </service>
+</definitions>

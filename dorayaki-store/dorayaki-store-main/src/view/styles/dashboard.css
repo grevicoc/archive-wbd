@@ -1,0 +1,27 @@
+.main-wrapper{
+  height: 80%;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1.5em;
+}
+
+.dashboard-card {
+  background: #39a2db;
+  margin: 1em;
+  padding: 0.5em;
+}
+
+.dashboard-card-title {
+  text-align: center;
+}
+
+.username-container {
+  display: flex;
+  justify-content: right;
+  margin-right: 20px;
+}
+  

@@ -1,0 +1,73 @@
+.body-beli-container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: #053742;
+    justify-content: center;
+    align-items: center;
+}
+
+.beli-container{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.dorayaki-name {
+    display: flex;
+}
+
+.dorayaki-desc {
+    display: flex;
+    font-size: 2vw;
+
+}
+
+.minus, .plus{
+    width:20px;
+    background:#39A2DB;
+    border-radius:4px;
+    padding:8px 5px 8px 5px;
+    border:1px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.value{
+    height:34px;
+    width: 100px;
+    text-align: center;
+    font-size: 26px;
+    border:1px solid #ddd;
+    border-radius:4px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.belibtn {
+    background-color: #39A2DB;
+    color: #FFFFFF;
+    height: 30px;
+    width: 200px;
+    font-size: 15px;
+    margin-top: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
